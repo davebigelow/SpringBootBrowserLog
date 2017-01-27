@@ -12,10 +12,7 @@ srcclr {
 buildscript {
 	repositories {
 		mavenLocal()
-		maven {
-			url "http://vm-devsupport/nexus/content/groups/asrs-public/"
-		}
-		
+		maven()
 	}
 	dependencies {
 		classpath "org.springframework.boot:spring-boot-gradle-plugin:1.4.4.RELEASE"
@@ -35,9 +32,7 @@ targetCompatibility = 1.8
 
 repositories {
 	mavenLocal()
-	maven {
-		  url "http://vm-devsupport/nexus/content/groups/asrs-public/"  
-	}
+	maven ()
 	 
 }
 
