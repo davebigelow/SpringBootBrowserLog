@@ -1,0 +1,13 @@
+bin/
+logs/
+build/
+
+.classpath
+.gradle
+.project
+.settings
+
+*.class
+*.jar
+*.war
+

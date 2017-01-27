@@ -1,0 +1,62 @@
+
+apply plugin: 'maven'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+
+srcclr {
+  apiToken = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nzg2OCwiZXhwIjoxNTE3MDYwMDY0LCJhdXRob3JpdGllcyI6IkFHRU5UIiwianRpIjoiNzAyODdhYjQtMTY3ZS00ZDk0LWFlYmQtZmJjYWU2Yjk4M2M2IiwiY2xpZW50X2lkIjoiIiwic2NvcGUiOltdfQ.CreTnnRJiVWqLS7rQzseMPlOUYRDLnE5g9xUIpwWHg0PO14PTQYo2nZ4wgVAl1ec4G4gcp6Lo1QDTK6bCPloL0v7IbCPEcH2PI2g_ug5lgE2Ae1MyuyPpjo8fBDlg_i21wp1sVVfxN3WIyD21ANErJzZiySmvBaXp3w4cE9fWUM // required field
+}
+
+buildscript {
+	repositories {
+		mavenLocal()
+		maven {
+			url "http://vm-devsupport/nexus/content/groups/asrs-public/"
+		}
+		
+	}
+	dependencies {
+		classpath "org.springframework.boot:spring-boot-gradle-plugin:1.4.4.RELEASE"
+	}
+}
+ 
+jar {
+   archiveName 'springBootBrowserLog'
+ }
+
+bootRepackage  {
+    mainClass = "daveb.SpringBootBrowserLog"
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenLocal()
+	maven {
+		  url "http://vm-devsupport/nexus/content/groups/asrs-public/"  
+	}
+	 
+}
+
+configurations {
+	all*.exclude group: 'ch.qos.logback'
+}
+
+dependencies {
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: '1.4.4.RELEASE'
+	compile group: 'com.lmax', name: 'disruptor', version: '3.3.4'
+	compile group: 'org.apache.logging.log4j', name: 'log4j-web', version: '2.7'
+	
+	compile ('org.springframework.boot:spring-boot-starter-web:1.4.4.RELEASE')	 
+	compile "org.springframework.boot:spring-boot-starter-actuator:1.4.4.RELEASE"
+	
+	
+	compile "org.springframework:spring-webmvc:4.3.3.RELEASE"
+	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.6.0'
+	compile group: 'io.springfox', name: 'springfox-spring-web', version: '2.6.0'
+	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.6.0'
+
+}
